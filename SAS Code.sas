@@ -8,7 +8,7 @@ proc sql feedback;
 	select pt_id, hosp, admdate, disdate 
 	from class7.admissions
 	where hosp=2;
-quit;
+run;
 
 proc print data=hospital2;
 run;
@@ -25,7 +25,7 @@ proc sql feedback;
 	from class7.admissions
 	where calculated length_of_stay >= 21 
 	order by length_of_stay;
-quit;
+run;
 
 proc print data=length_of_stay21;
 run;
@@ -39,7 +39,7 @@ proc sql feedback;
 	create table distinct_patients_er as 
 	select distinct pt_id
 	from class7.ervisits;
-quit;
+run;
 
 proc print data=distinct_patients_er;
 run;
@@ -56,7 +56,7 @@ proc sql feedback;
 		left join class7.patients as b
 		on a.pt_id = b.id
 	order by pt_id;
-quit;
+run;
 
 proc print data=admissions_info;
 run;
@@ -74,7 +74,7 @@ proc sql feedback;
 		on a.pt_id = b.id
 			left join (select distinct md_id, lastname from class7.doctors) as c
 			on b.primmd = c.md_id;
-quit;
+run;
 
 proc print data=admissions_info2;
 run;
@@ -97,7 +97,7 @@ proc sql feedback;
 	from class7.admissions as a
 		full outer join class7.ervisits as b
 		on a.pt_id = b.pt_id;
-quit;
+run;
 
 proc print data=all_hospital_visits;
 run;
@@ -113,7 +113,7 @@ proc sql feedback;
 		min(visitdate)		as first_er_visit 	format=date9., 
 		max(visitdate)		as last_er_visit	format=date9.
 	from class7.ervisits;
-quit;
+run;
 title;
 
 
@@ -128,7 +128,7 @@ proc sql feedback;
 		max(visitdate)		as last_er_visit	format=date9.
 	from class7.ervisits
 	group by er;
-quit;
+run;
 title;
 
 
@@ -144,7 +144,7 @@ proc sql feedback;
 	from class7.ervisits
 	group by er
 	having n_patients >= 4;
-quit;
+run;
 title;
 
 
@@ -156,7 +156,7 @@ proc sql feedback;
 	select * from class7.fake
 	where id not in 
 		(select sub_id from class7.subjects);
-quit;
+run;
 
 proc print data=unique_fake_subjects;
 run;
@@ -170,7 +170,7 @@ proc sql feedback;
 	select put(n(pt_id), 3.), put(n(distinct pt_id), 3.)
 	into :n_admissions, :n_patients
 	from class7.admissions;
-quit;
+run;
 title;
 
 
@@ -187,7 +187,7 @@ proc sql feedback;
 	select distinct pt_id 
 	into :id1 through :id20
 	from class7.ervisits;
-quit;
+run;
 %put &id1., &id2., &id3., &id4., &id5., &id6., &id7., &id8., &id9., &id10., 
 	&id11., &id12., &id13., &id14., &id15., &id16., , &id17., , &id18., , &id19., &id20.;
 title;
