@@ -1,5 +1,5 @@
 /******************** Homework 7 - Proc SQL********************/
-libname class7 "C:/Irene Hsueh's Documents\MS Applied Biostatistics/BS 803 - Statistical Programming for Biostatisticians/Class 7 - Proc SQL/Lecture";
+libname class7 "C:/Irene Hsueh's Documents/MS Applied Biostatistics/BS 803 - Statistical Programming for Biostatisticians/Class 7 - Proc SQL/Lecture";
 
 /* Question 1 */
 title "Hospital 2 Admissions";
